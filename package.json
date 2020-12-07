@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "NODE_ENV=development ts-node-dev -r tsconfig-paths/register ./index.ts",
+    "dev": "NODE_ENV=development ts-node-dev --files -r tsconfig-paths/register ./index.ts",
     "dev:debug": "NODE_ENV=development ts-node-dev --inspect-brk -r tsconfig-paths/register ./index.ts",
     "build": "ttsc -p tsconfig.build.json",
     "start": "NODE_ENV=production npm run build && node build/index.js",
@@ -33,6 +33,7 @@
     "@types/pino": "^6.3.4",
     "@typescript-eslint/eslint-plugin": "^4.9.0",
     "@zerollup/ts-transform-paths": "^1.7.18",
+    "body-parser": "^1.19.0",
     "class-validator": "^0.12.2",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",

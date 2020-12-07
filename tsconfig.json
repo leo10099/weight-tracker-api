@@ -29,7 +29,7 @@
     "paths": {
       "~/*": ["./*"]
     },
-    "typeRoots": ["node_modules/@types"],
+    "typeRoots": ["node_modules/@types", "./@types/request.d.ts"],
     "strictPropertyInitialization": false
   },
   "include": ["./**/*"],
