@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "NODE_ENV=development ts-node-dev --files -r tsconfig-paths/register ./index.ts",
     "dev:debug": "NODE_ENV=development ts-node-dev --inspect-brk -r tsconfig-paths/register ./index.ts",
-    "start-prod": "NODE_ENV=development ttsc -p tsconfig.build.json && npm run start",
+    "build": "ttsc -p tsconfig.build.json",
     "start": "NODE_ENV=production npm run build && node build/index.js",
     "lint": "eslint --ext .ts ./",
     "lint:fix": "eslint --ext .ts ./ --fix"
