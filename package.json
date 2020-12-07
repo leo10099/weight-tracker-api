@@ -25,10 +25,13 @@
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.9",
     "@types/mongodb": "^3.6.1",
+    "@types/pino": "^6.3.4",
     "@zerollup/ts-transform-paths": "^1.7.18",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mongodb": "^3.6.3",
+    "pino": "^6.7.0",
+    "pino-pretty": "^4.3.0",
     "reflect-metadata": "^0.1.13"
   }
 }

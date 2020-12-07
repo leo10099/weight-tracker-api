@@ -1,14 +1,30 @@
 import express from 'express';
 import dotenv from 'dotenv';
 
+// Types
+import { AddressInfo } from 'net';
+
+// Logger
+import Logger from 'services/Logger';
+
 // Constants
 import constants from 'utils/constants';
 
-const bootstrap = async () => {
-  dotenv.config();
-  const app = express();
+const run = async () => {
+  // Handle uncaught exceptions/unhandled promise rejections and log them
+  process.on('uncaughtException', (e) => {
+    Logger.error(`${e.message}\n${e.stack}`);
+  });
+  process.on('unhandledRejection', (error) => {
+    throw error;
+  });
 
-  app.listen(constants.PORT);
+  dotenv.config();
+
+  const app = express().listen(constants.PORT);
+  const { port: portNumber } = app.address() as AddressInfo;
+
+  Logger.info(`Server running on PORT: ${portNumber}`);
 };
 
-bootstrap();
+run();
