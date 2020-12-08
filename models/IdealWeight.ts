@@ -8,4 +8,7 @@ export default class IdealWeigth {
   @IsNotEmpty()
   @IsInt()
   idealWeight: number;
+
+  @IsInt()
+  currentWeight?: number;
 }
