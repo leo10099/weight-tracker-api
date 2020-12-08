@@ -29,6 +29,7 @@ export const save = async (
   const newIdealWeight = new IdealWeigth();
   newIdealWeight.idealWeight = idealWeightData.idealWeight;
   newIdealWeight.userId = idealWeightData.userId;
+  newIdealWeight.currentWeight = idealWeightData.currentWeight;
 
   const errors = await validate(newIdealWeight);
 
@@ -39,6 +40,7 @@ export const save = async (
     };
   }
 
+  // If exact same record exists, return it
   const alreadyExists = await collection?.findOne(newIdealWeight);
 
   if (alreadyExists)
@@ -47,10 +49,27 @@ export const save = async (
       errors: null,
     };
 
-  const result = await collection?.insertOne(newIdealWeight);
+  const result = await collection?.findOneAndUpdate(
+    { userId: newIdealWeight.userId },
+    { $set: newIdealWeight },
+    {
+      upsert: true,
+      returnOriginal: false,
+    },
+  );
 
   return {
-    data: result?.ops[0],
+    data: result?.value,
     errors: null,
   };
+};
+
+/* Delete one by User ID */
+export const deleteOne = async (
+  userId: string | number,
+  collection?: Collection<IdealWeigth>,
+): Promise<undefined | number> => {
+  const result = await collection?.deleteOne({ userId: userId.toString() });
+
+  return result?.deletedCount;
 };

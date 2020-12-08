@@ -1,4 +1,4 @@
-import { IsInt, IsString, IsNotEmpty } from 'class-validator';
+import { IsInt, IsString, IsNotEmpty, IsOptional } from 'class-validator';
 
 export default class IdealWeigth {
   @IsNotEmpty()
@@ -10,5 +10,6 @@ export default class IdealWeigth {
   idealWeight: number;
 
   @IsInt()
+  @IsOptional()
   currentWeight?: number;
 }
